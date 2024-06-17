@@ -17,14 +17,17 @@ class BankAccount:
         return ("Your current balance after deposit is " + str(self.balance))
     
     def withdraw(self, amount): 
-        self.balance = self.balance - amount
-        return ("Your current balance after withdrawl is " + str(self.balance)) 
-    
+        if amount > self.balance: 
+            return ("Insufficient Funds")
+        else: 
+            self.balance = self.balance - amount
+            return ("Your current balance after withdrawl is " + str(self.balance)) 
 
 Bank = BankAccount("Bank of America", 0)
 Bank.setBalance(15000)
 print(Bank.checkBalance())
 print(Bank.deposit(50))
 print(Bank.checkBalance())
+print(Bank.withdraw(23500))
 print(Bank.withdraw(500))
 print(Bank.checkBalance())
